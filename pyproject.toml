@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "helpdesk-search"
+version = "0.1.0"
+description = "Semantic search over a help center with sentence-transformers and Pinecone"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = [
+    "sentence-transformers>=5,<7",
+    "pinecone>=7,<11",
+    "pandas>=2",
+    "numpy>=2",
+    "python-dotenv>=1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.setuptools]
+packages = ["helpdesk_search"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["pinecone: talks to a real Pinecone index (needs PINECONE_API_KEY and RUN_PINECONE_TESTS=1)"]
